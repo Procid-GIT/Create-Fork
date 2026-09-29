@@ -33,6 +33,13 @@ jobs:
         if: ${{ !inputs.is-release }}
         run: ./gradlew runGameTestServer
 
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: create_6.0.11
+          path: build/libs/*.jar
+          retention-days: 7
+
       - name: Publish
         if: ${{ inputs.is-release }}
         env:
